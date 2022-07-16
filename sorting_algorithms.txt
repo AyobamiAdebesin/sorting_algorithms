@@ -1,0 +1,15 @@
+1) Selection sort
+2) Insertion sort
+3) Quick sort
+4) Merge sort
+5) Heap sort
+6) Radix sort (LSD)
+7) Radix sort (MSD)
+8) Shell sort
+9) Bubble sort
+10) Cocktail shaker sort
+11) Gnome sort
+12) Bitonic sort
+13) Bogo sort
+14) std::sort (intro sort)
+15) std::stable sort(adaptive merge sort)
