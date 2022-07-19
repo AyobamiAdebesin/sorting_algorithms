@@ -1,1 +1,1 @@
-Project on Sorting algorithms in C
+Data Structures Project on Sorting algorithms in C
