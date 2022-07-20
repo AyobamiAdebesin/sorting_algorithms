@@ -42,9 +42,9 @@ ssize_t partition(int *Arr, ssize_t low, ssize_t high, size_t size)
 			j++;
 		}
 	}
-	if (Arr[j] != Arr[high])
+	if (Arr[j] != pivot)
 	{
-    swap(&Arr[j], &Arr[pivot]);
+    swap(&Arr[pivot], &Arr[j]);
 	print_array(Arr, size);
 	}
 	return (j);
@@ -64,7 +64,7 @@ void quicksort2(int *Arr, ssize_t low, ssize_t high, size_t size)
 {
 	ssize_t par = 0;
 
-	if (low  < high)
+	if (low < high)
 	{
 		/**Getting the index of the partition**/
 		par = partition(Arr, low, high, size);
