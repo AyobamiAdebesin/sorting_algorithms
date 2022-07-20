@@ -1,44 +1,47 @@
 #include "sort.h"
+#include <stdio.h>
+
 /**
- * insertion_sort_list - Sorts a diuble linked list of integers in
- * ascending order using the insertion sort algorithm
+ * insertion_sort_list - sorts a DLL of integers in
+ * ascending order using the insertion sort
+ * algorithm
  *
- *
- * @list: double pointer to the head node of a doubly linked list
- * Return: 0
+ * @list: doubly linked list
+ * Return: no return
  */
-
-void insertion_sort_list(listint_t, **list):
+void insertion_sort_list(listint_t **list)
 {
-	size_t size, i, j;
-	int key;
+	listint_t *ptr, *tmp;
 
-	listint_t *tmp, *h;
+	if (!list)
+		return;
 
-	tmp = *list;
-	h = *list;
+	ptr = *list;
 
-	if (h != NULL)
+	while (ptr)
 	{
-		while (h->prev != NULL)
+		while (ptr->next && (ptr->n > ptr->next->n))
 		{
-			h = h->prev;
+			tmp = ptr->next;
+			ptr->next = tmp->next;
+			tmp->prev = ptr->prev;
+
+			if (ptr->prev)
+				ptr->prev->next = tmp;
+
+			if (tmp->next)
+				tmp->next->prev = ptr;
+
+			ptr->prev = tmp;
+			tmp->next = ptr;
+
+			if (tmp->prev)
+				ptr = tmp->prev;
+			else
+				*list = tmp;
+
+			print_list(*list);
 		}
+		ptr = ptr->next;
 	}
-
-	
-	/** Get the size of the list*/
-	tmp = h;
-	size = 0;
-	while (tmp != NULL)
-	{
-		size++;
-		tmp = tmp->next;
-	}
-
-	for (i = 1; i < size; i++)
-	{
-
-
-
 }
