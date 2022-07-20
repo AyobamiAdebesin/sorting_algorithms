@@ -1,4 +1,4 @@
-#include "sort.h"  
+#include "sort.h"
 
 /**
  * swap - Swaps two integer pointers
@@ -18,7 +18,7 @@ void swap(int *xp, int *yp)
 /**
  * selection_sort - sorts an array by holding the righmost value
  * and swaping with the least value in the rest of the array.
- * 
+ *
  * @array: Array of integer to be sorted
  * @size: size of @array
  */
