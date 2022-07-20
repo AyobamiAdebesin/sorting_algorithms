@@ -1,87 +1,57 @@
 #include "sort.h"
-
 /**
- * swap - Swaps two integer pointers
+ * quick_sort - function that sorts an array
+ * of integers in ascending order using the
+ * quick sort algorithm
  *
- * @xp: first integer pointer
- * @yp: second integer pointer
- *
- * Return: None
+ * @array: input arrray
+ * @size: size of the array
+ * Return: no return
  */
-void swap(int *xp, int *yp)
+void quick_sort(int *array, size_t size)
 {
-	int temp = *xp;
-	*xp = *yp;
-	*yp = temp;
+	_qsort(array, 0, size - 1, size);
 }
-
 /**
- * partition - function that sorts an array of integers
- * and get the index of the partition.
- * @A: array of integers
- * @size: lenght of array
- * @low_index: low index
- * @high_index: high index
- * Return: none
+ * _qsort - auxiliar function for the
+ * quick_sort function
+ * @a: input arrray
+ * @low: index for the first element
+ * @high: index for the last element
+ * @size: size of the array
+ * Return: no return
  */
-
-ssize_t partition(int *Arr, ssize_t low, ssize_t high, size_t size)
+void _qsort(int *a, int low, int high, int size)
 {
-
-	/**The pivot of the array**/
-	int pivot = Arr[high];
-	int i;  /**elements of the array**/
-	int j = 0; /**Counter variable for partition**/
-
-	for (i = 0; i < high; i++)
-	{
-		if (Arr[i] <= pivot);
-		{
-			swap(&Arr[i], &Arr[j]);
-			print_array(Arr, size);
-			j++;
-		}
-	}
-	if (Arr[j] != pivot)
-	{
-    swap(&Arr[pivot], &Arr[j]);
-	print_array(Arr, size);
-	}
-	return (j);
-}
-
-/**
- * quicksort2 - function that sorts an array of integers
- * in ascending order using the Quick sort algorithm
- * @A: array of integers
- * @size: lenght of array
- * @low_index: low index
- * @high_index: high index
- * Return: none
- */
-
-void quicksort2(int *Arr, ssize_t low, ssize_t high, size_t size)
-{
-	ssize_t par = 0;
+	int p, w, i;
+	int tmp;
 
 	if (low < high)
 	{
-		/**Getting the index of the partition**/
-		par = partition(Arr, low, high, size);
-		/**Quicksorting the leftside of the partition**/
-		quicksort2(Arr, low, par - 1, size);
-		/**Quicksorting the rightside of the partition**/
-		quicksort2(Arr, par + 1, high, size);
+		p = high;
+		w = low;
+		for (i = low; i < high; i++)
+		{
+			if (a[i] < a[p])
+			{
+				if (i != w)
+				{
+					tmp = a[i];
+					a[i] = a[w];
+					a[w] = tmp;
+					print_array(a, size);
+				}
+				w++;
+			}
+		}
+		if (w != p && a[w] != a[p])
+		{
+			tmp = a[w];
+			a[w] = a[p];
+			a[p] = tmp;
+			print_array(a, size);
+		}
+		_qsort(a, low, w - 1, size);
+		_qsort(a, w + 1, high, size);
 	}
-}
-
-
-
-void quick_sort(int *array, size_t size)
-{
-	if (!array || size < 2)
-	{
-		return;
-	}
-	quicksort2(array, 0, size - 1, size);
 }
